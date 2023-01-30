@@ -47,6 +47,7 @@ body {
   height: 150px;
   margin: 15px;
   border-radius: 50%;
+  pointer-events: none;
 }
 .name_and_charge {
   color: rgb(0, 10, 121);
