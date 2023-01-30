@@ -1,0 +1,486 @@
+/*ACLARACION PERSONAL: de momento no logro personalizar el height de la scrollbar, entonces como uso el border-radius en los container, la scrollbar queda afuera y se ve mal. entonces una solucion es no usar border-radius en los container , las clases donde modifique el border-radius son: (.container, .container .left_column) originalmente estaban border-radius: 50px; y de momento hasta no saber modificar el height de la scrollbar a mi gusto lo dejare asi.
+*/
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+* {
+  margin: 0px;
+  font-family: 'Lato', sans-serif;
+  box-sizing: border-box;
+}
+body {
+  background-image: url(./img/background/azul.jpg);
+  display: flex;
+  justify-content: center;
+  /*para que se vea el container en el centro*/
+  align-items: center;
+}
+  .container {
+    position: relative;
+    width: 100%;
+    /*max-width: 1000px;*//*max-width y min-height es el tamanio en pixeles del container*/
+    /*min-height: 900px;*/
+    max-width: 1000px;
+    height: 900px;
+    background-image: url(./img/background/blanco.jpg);
+    background-size: cover;
+    margin: 32px;/*margen con respecto al body*/
+    display: grid;/*para que se vea como columnas verticales*/
+    grid-template-columns: 1fr 2fr; /*creo 2 columnas, con 1 fr de espacio la primera y 2fr de espacio la segunda*/
+    box-shadow: 0 30px 100px rgb(0, 3, 85);/*sombra negra tras el container, salvo en top side*/
+    border-radius: 0px;
+}
+
+.container .left_column {
+  position: relative;
+  background-image: url(./img/background/celeste.jpg);
+  background-repeat: no-repeat;
+  background-position: right left;
+  background-size: cover;
+  border-radius: 0px;
+  /*overflow: auto;*/
+  scrollbar-color: #00aaff rgb(255, 255, 255);  /*no funciona con edge, con firefox si.*/
+}
+.profile_picture {
+  text-align:center;/*centro la imagen de perfil en el div de la columna izquierda*/
+}
+.profile_picture img {
+  width: 150px;
+  height: 150px;
+  margin: 15px;
+  border-radius: 50%;
+}
+.name_and_charge {
+  color: rgb(0, 10, 121);
+  font-size: 10pt;
+  text-transform: uppercase;
+  text-align:center;
+}
+.name_and_charge h2 span{
+  font-size: 12pt;
+  font-weight: 300;
+}
+.name_and_charge h3{
+  margin-bottom: 20px;
+  text-transform: none;
+}
+.name_and_charge a{
+  color: rgb(0, 10, 121);
+  margin-left: 10px;
+  margin-bottom: 20px;
+}
+.small_title {
+  color: rgb(0, 10, 121);
+  text-transform: uppercase;
+  font-size: 10pt;
+}
+.profession_name{
+  color: rgb(0, 10, 121);
+  font-style: italic;
+  font-size: 12pt;
+  font-weight: 600;
+}
+.content {
+  color: rgb(0, 10, 121);
+  font-size: 12pt;
+  font-weight: 500;
+}
+.title {
+  color: rgb(0, 10, 121);
+  text-transform: uppercase;
+  font-size: 13pt;
+  margin-top: 25px;
+  margin-bottom: 15px;
+  margin-left: 10px;
+}
+
+ul li { /*elementos de las unordered lists, materias aprobadas*/
+  /*color: rgb(0, 10, 121);*/
+  color: rgb(77, 77, 77);
+  margin-bottom: 15px;
+  list-style: none;
+}
+ul li span{ /*elementos de las unordered lists, materias aprobadas*/
+  /*color: #1500ff;*/
+  color: rgb(0, 10, 121);;
+  font-style: italic;
+}
+ul li a { /*direcciones, address de los contactos y nivel de idiomas*/
+position: relative; /*esto es para que la a href quede al lado del item de la unordered list de materias aprobadas*/
+}
+.icon {
+  width: 23px;
+  height: 23px;
+  display: inline-block;
+  background-size: cover;
+}
+.email {
+  background-image : url("https://cdn-icons-png.flaticon.com/512/3686/3686989.png");
+}
+.instagram {
+  background-image: url("https://cdn-icons-png.flaticon.com/512/2111/2111463.png");
+}
+.facebook {
+  background-image: url("https://cdn-icons-png.flaticon.com/512/1384/1384053.png");
+}
+.twitter {
+background-image: url("https://cdn-icons-png.flaticon.com/512/3256/3256013.png");
+}
+.linkedin {
+background-image: url("https://cdn-icons-png.flaticon.com/512/2190/2190367.png");
+}
+.address {
+  background-image: url("https://cdn-icons-png.flaticon.com/512/684/684908.png");
+}
+.personal_information li {
+  display: flex; /*span al lado del h3*/
+  margin-bottom: 5px; /*espacio entre los elementos de la lista*/
+}
+.personal_information h3 {
+  margin-top: 2px;/*acomodo para que el h3 quede centrado con el span*/
+}
+.personal_information span {
+  margin-left: 10px;
+  margin-top: 0px;
+  color: rgb(0, 10, 121);
+}
+.attributions { /*acomodo la caja con los attributions a los backgrounds*/
+  font-size: 5pt;
+  /*position:absolute;
+  bottom:0;
+  right: 0;
+  margin-right: 27px;
+  */
+  position:relative;
+  margin-top: 20px;
+}
+.attributions ul li { /*acomodo el margen entre los elementos de la lista desordenada*/
+  margin-bottom: 0px;
+}
+.attributions h4{
+  text-transform:uppercase; /*es para que el h4 que es el nombre de la empresa vaya mayusculas*/
+  color: #00aaff;
+  font-weight: 500;
+  margin-left: 40px;
+  margin-bottom: 0px;
+}
+
+/*En los browsers opera y edge tienen el mismo comportamiento con el scroll, pero en mozilla no surgen efecto los estilos de abajo, en chrome no probe porque no lo uso.*/
+.right_column, .left_column { /*scroll de ambas columnas*/
+  /*
+  max-height:100%;
+  overflow: auto;
+  */
+  overflow-y: scroll;
+  scrollbar-color: #00aaff rgb(255, 255, 255);  /*no funciona con edge, con firefox si.*/
+}
+.right_column::-webkit-scrollbar, .left_column::-webkit-scrollbar {
+  width: 0.5em;
+}
+/*esto es la caja de la barra del fondo*/
+.right_column::-webkit-scrollbar-track, .left_column::-webkit-scrollbar-track {
+  /*
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+  */
+}
+/*esto es la barra de desplazamiento en si*/
+.right_column::-webkit-scrollbar-thumb, .left_column::-webkit-scrollbar-thumb {
+  /*
+  background-color: darkgrey;
+  outline: 1px solid slategrey;
+  */
+  background-color: #00aaff;
+  /*outline si no le pongo nada, no tendra linea de contorno*/
+  border-radius: 0%;
+  border-style: none;
+}
+.right_column::-webkit-scrollbar:hover, .left_column::-webkit-scrollbar:hover {
+  width: 0.7em;
+}
+
+.titles_right {
+  color: rgb(0, 10, 121);
+  text-transform: uppercase;
+  font-size: 13pt;
+  margin-top: 25px;
+  margin-bottom: 15px;
+  margin-left: 10px;
+}
+#first_title_in_document{
+  margin-top: 30px;/*margen superior del primer titulo del documento, refiriendome a traves de una id*/
+}
+p {/*las dos opciones de text son para justificar*/
+  text-align: justify;
+  text-justify: inter-word;
+  margin-left: 20px;
+  margin-right: 15px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.company1{
+  overflow: hidden;
+}
+.company_information {
+  text-transform:uppercase; /*es para que el h4 que es el nombre de la empresa vaya mayusculas*/
+  color: #00aaff;
+  font-weight: 600;
+  margin-left: 20px;
+  float: left;
+}
+.company_information h3 {
+  text-transform:lowercase; /*es para que el h3 que es el año vaya minuscula*/
+}
+.horizontal_line{
+  width: 30%;
+  height: 2px;
+  background-color: #00aaff;
+  float: left;
+  margin-top: 20px;
+  margin-left: 15px;
+  right: 0;
+}
+.company_exp_description p:first-child{
+  overflow: visible;
+  float: none;
+  margin-top: 50px;
+}
+.company_contact h4{
+  text-transform: uppercase;
+  color: #00aaff;
+  font-weight: 600;
+  margin-left: 20px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+.map {
+  background-image: url("https://cdn-icons-png.flaticon.com/512/854/854878.png");
+}
+.company_contact_list {
+  float: left; /*ubica un elemento al lado izquierdo*/
+}
+.company_contact_list a {
+  margin-right: 20px;
+}
+.company_contact_list span {
+  margin-right: 20px;
+}
+.skill_box{
+  /*barra de porcentaje:*/
+  position: relative;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 150px 1fr;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.skill_box:last-child {
+  margin-bottom: 40px;
+}
+.skill_box h4 { /*igual al titulo de empresas, ver de incluir esta clase para no repetir*/
+  text-transform: uppercase;
+  color: #00aaff;
+  font-weight: 600;
+  margin-left: 20px;
+  float: left;
+}
+.skill_box .percent {
+  /*fondo del porcentaje*/
+  position: relative;
+  /*
+  width: 300px;
+  */
+  width: 50%;
+  height: 10px;
+  background: #c7c7c7;
+  margin-left: 20px;
+}
+.skill_box .percent div {
+  /*nivel del porcentaje*/
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background: #03a9f4;
+}
+.titles_right h4 {
+  text-transform:uppercase; /*es para que el h4 que es el nombre de la empresa vaya mayusculas*/
+  color: #00aaff;
+  font-weight: 500;
+  margin-left: 10px;
+  margin-bottom: 20px;
+}
+.titles_right h4 a, .titles_right h5 a {/*esto es para que la imagen que redirecciona (a href) quede al lado de la universidad*/
+  position: relative;
+}
+.titles_right h5 {
+  text-transform:uppercase; /*es para que el h4 que es el nombre de la empresa vaya mayusculas*/
+  color: #00aaff;
+  font-size: 12pt;
+  font-weight: 500;
+  margin-left: 10px;
+  margin-bottom: 20px;
+}
+.aclaration {
+  font-style: italic;
+  font-size: 10pt;
+}
+.materias_aprobadas li { /*estilo de la lista, con cuadradito y margen*/
+  margin: 5px;
+  list-style:square;
+  font-size: 12pt;
+}
+.materias_aprobadas :last-child{ /*al ultimo hijo le doy margen*/
+  margin-bottom: 20px;
+}
+.pdf { /*estilo del icono del pdf, margen tamaño y posicion para que este al lado del texto*/
+  margin: 0px 0px 0px 5px;
+  width: 18px;
+  height: 18px;
+  position: absolute;
+}
+a:link, a:visited, a:hover , a:active  { /*modifico el comportamiento de los a href*/
+  /*
+  a:link - a normal, unvisited link,
+  a:visited - a link the user has visited,
+  a:hover - a link when a user mouses over it,
+  a:active - the moment a link is clicked.
+  */
+  /*text-decoration:none; */ /*Eliminación del subrayado*/
+  text-transform:initial;/*solamente la primer letra mayuscula*/
+  font-style: italic;
+  font-weight: 500;
+  color: rgb(0, 10, 121);
+  /*color: #1500ff;*/
+  margin-left: 5px;
+}
+a img {
+  position: fixed;
+}
+.video_box {
+  margin-bottom: 20px;
+}
+.audio_box {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.video {
+  /*
+  Responsive Web Design - Videos:
+  max-width: 100%;
+  height: auto;
+  */
+  width: 300px;
+  height: auto;
+  /*outline:auto;*/
+  border: 1px solid #009ba3;
+  padding: 2px;
+  margin-left: 10px;
+}
+.audio {
+  width: 280px;
+  height: 53px;
+}
+
+.education ul, .contact_data ul {
+  padding-left: 25px;/*por defecto esta en 40*/
+}
+
+.button_box{
+  margin-left: 20px;
+  /*para centrar el boton:*/
+  /*
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  */
+}
+.button {
+  background-color: #1500ff;
+  color: white;
+  border: none;
+  padding: 4px 10px;/*tamaño del boton*/
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 10px;
+  /*transition-duration: 0.4s;*/ /*esto hace el delay de efectos de cambiar el color tras apuntar con el mouse y el tiempo que tarda el efecto de :active*/
+}
+.button:hover {/*efecto tras encimar el mouse*/
+  background-color: rgb(0, 10, 121);
+  color: white;
+  /*box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);*/
+  box-shadow: 0 8px 10px 0 rgba(0,0,0,0.24), 0 5px 5px 0 rgba(0,0,0,0.19);
+}
+.button:active {/*efecto tras presionarlo*/
+  transform: translateY(4px);
+}
+
+/*Responsive web design:*/
+@media screen and (max-width: 767px) { /*no llega a ser HD 720p*/
+  * {
+    flex-direction: column;
+  }
+  .skill_box .percent div {
+    /*nivel del porcentaje*/
+    position: absolute;
+    margin-left: 0px; /*corrigo el margen que me desacomoda el margin-left: 10px; de *{...}  */
+  }
+  .titles_right, .title {
+    margin-left: 20px;
+  }
+  .titles_right h5 a, .titles_right h4 a, .materias_aprobadas li a{
+    /*ticmas academy, unrc programa de materias se muestra como lista*/
+    /*los rendimientos academicos y las materias aprobadas tambien*/
+    /*se muestra la img dle pdf debajo en vez de al costado*/
+    display: list-item;
+  }
+
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+  }
+  .container {
+    position: relative;
+    width: auto;
+    height: auto;
+    margin: 10px;
+    grid-template-columns: repeat(1,1fr);
+  }
+  .left_column {
+    position: relative;
+    display: flex;
+    justify-content: left;
+    /*align-items: center;*/
+    width: auto;
+    height: auto;
+    overflow: auto;
+  }
+  .right_column {
+    width: auto;
+    height: auto;
+    overflow: auto;
+    background-size: cover;
+    display: inline-table;
+  }
+
+  /*seteo los estilos para ver los datos "sobre mi" de forma correcta*/
+  .personal_information li {
+    display: flex; /*span al lado del h3*/
+    margin-bottom: 5px; /*espacio entre los elementos de la lista*/
+    flex-direction: row; /*span al lado del h3*/
+  }
+  .personal_information h3 {
+    margin-top: 2px;/*acomodo para que el h3 quede centrado con el span*/
+  }
+  .personal_information span {
+    margin-left: 10px;
+    margin-top: 0px;
+    color: rgb(0, 10, 121);
+  }
+
+}
