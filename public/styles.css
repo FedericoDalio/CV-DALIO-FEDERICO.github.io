@@ -224,24 +224,23 @@ p {/*las dos opciones de text son para justificar*/
   color: #00aaff;
   font-weight: 600;
   margin-left: 20px;
-  float: left;
+  float: none;
 }
 .company_information h3 {
   text-transform:lowercase; /*es para que el h3 que es el año vaya minuscula*/
 }
 .horizontal_line{
-  width: 30%;
+  width:45%;
   height: 2px;
   background-color: #00aaff;
-  float: left;
-  margin-top: 20px;
-  margin-left: 15px;
-  right: 0;
+  float: none;
+  margin-top: 10px;
+  margin-left: 20px;
+
 }
 .company_exp_description p:first-child{
   overflow: visible;
   float: none;
-  margin-top: 50px;
 }
 .company_contact h4{
   text-transform: uppercase;
