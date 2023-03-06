@@ -49,9 +49,6 @@ body {
   border-radius: 50%;
   pointer-events: none;/* evitar que el ratón de la PC al dar click en la imagen no pueda arrastrarse en la pagina web ni tampoco guardar las imagenes en la pc*/
 }
-img {
-  pointer-events: none;/* evitar que el ratón de la PC al dar click en la imagen no pueda arrastrarse en la pagina web ni tampoco guardar las imagenes en la pc*/
-}
 .name_and_charge {
   color: rgb(0, 10, 121);
   font-size: 10pt;
